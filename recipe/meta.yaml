@@ -11,7 +11,7 @@ source:
   sha256: 79f24d75d607c30040ed78b13fc621a488f57462e86aed5667e049f8b346642c
 
 build:
-  number: 2
+  number: 3
   skip: true  # [not linux]
   skip: true  # [cuda_compiler_version == "10.2"]
 
@@ -24,6 +24,9 @@ requirements:
   host:
     - python
     - pip
+    - cuda-cudart-dev   # [(cuda_compiler_version or "").startswith("12")]
+    - libcublas-dev     # [(cuda_compiler_version or "").startswith("12")]
+    - libcusparse-dev   # [(cuda_compiler_version or "").startswith("12")]
   run:
     - python
     - pytorch
