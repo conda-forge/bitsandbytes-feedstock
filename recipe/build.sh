@@ -2,7 +2,7 @@
 
 set -exuo pipefail
 
-make GPP=$CXX cpuonly
+make GPP=$CXX CUDAVERSION=CPU cpuonly
 
 if [[ "${cuda_compiler_version}" = 10.* ]]; then
   make NVCC="${CUDA_HOME}/bin/nvcc -ccbin=${CC}" GPP=$CXX CUDA_VERSION=${cuda_compiler_version/./} cuda10x_nomatmul
