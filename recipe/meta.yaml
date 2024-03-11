@@ -20,7 +20,8 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler("cuda") }}                 # [cuda_compiler_version != "None"]
-    - make
+    - cmake
+    - ninja
   host:
     - python
     - pip
