@@ -1,5 +1,5 @@
 {% set name = "bitsandbytes" %}
-{% set version = "0.43.2" %}
+{% set version = "0.43.3" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 source:
   # Don't use the PyPI source tarball as this already contains compiled code.
   url: https://github.com/TimDettmers/bitsandbytes/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 04418403d4ca81e9a89b28dfadefb0552d9c80b5e4198f5db14038137f90484e
+  sha256: 7a468bc977da19c176cc578954bfd7a3c64182f387a6849e9f0a38d5cba1b4df
 
 build:
   number: 0
