@@ -7,11 +7,11 @@ package:
 
 source:
   # Don't use the PyPI source tarball as this already contains compiled code.
-  url: https://github.com/TimDettmers/bitsandbytes/archive/refs/tags/{{ version }}.tar.gz
+  url: https://github.com/bitsandbytes-foundation/bitsandbytes/archive/refs/tags/{{ version }}.tar.gz
   sha256: 7a468bc977da19c176cc578954bfd7a3c64182f387a6849e9f0a38d5cba1b4df
 
 build:
-  number: 1
+  number: 2
   string: cuda{{ cuda_compiler_version | replace('.', '') }}_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
   string: cpu_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version == "None"]
   skip: true  # [not linux]
@@ -48,11 +48,14 @@ test:
     - pip
 
 about:
-  home: https://github.com/TimDettmers/bitsandbytes
-  summary: k-bit optimizers and matrix multiplication routines.
+  home: https://github.com/bitsandbytes-foundation/bitsandbytes
+  summary: The bitsandbytes library is a lightweight Python wrapper around CUDA custom functions, in particular 8-bit optimizers, matrix multiplication (LLM.int8()), and 8 & 4-bit quantization functions.
   license: MIT
   license_file: LICENSE
 
 extra:
   recipe-maintainers:
     - xhochy
+    - iamthebot
+    - shaowei-su
+    - snapbug
