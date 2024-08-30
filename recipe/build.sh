@@ -2,10 +2,10 @@
 
 set -exuo pipefail
 
-if [[ "${cuda_compuiler_version:-None}" != "None" ]]; then
-    export CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_CUDA=ON"
+if [[ "${cuda_compiler_version:-None}" != "None" ]]; then
+  export CMAKE_ARGS="${CMAKE_ARGS} -DCOMPUTE_BACKEND=cuda"
 else
-    export CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_CUDA=OFF"
+  export CMAKE_ARGS="${CMAKE_ARGS} -DCOMPUTE_BACKEND=cpu"
 fi
 
 mkdir -p build
