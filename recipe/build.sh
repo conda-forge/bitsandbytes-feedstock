@@ -13,7 +13,6 @@ pushd build/cpu
 cmake ${CMAKE_ARGS} -DCOMPUTE_BACKEND=cpu -GNinja ../..
 ninja
 popd
-rm -rf build/cpu
 
 # CUDA enabled build. This will create libbitsandbytes_cuda.so
 # Even in a CUDA build we will still bundle the _cpu.so as a fallback if no GPUs are available
@@ -23,7 +22,6 @@ if [[ "${cuda_compiler_version:-None}" != "None" ]]; then
   cmake ${CMAKE_ARGS} -DCOMPUTE_BACKEND=cuda -GNinja ../..
   ninja
   popd
-  rm -rf build/cuda
 fi
 
 # This will automatically pull in all .so files we've built
