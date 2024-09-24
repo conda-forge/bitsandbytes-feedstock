@@ -3,11 +3,11 @@ About bitsandbytes-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/bitsandbytes-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/TimDettmers/bitsandbytes
+Home: https://github.com/bitsandbytes-foundation/bitsandbytes
 
 Package license: MIT
 
-Summary: k-bit optimizers and matrix multiplication routines.
+Summary: The bitsandbytes library is a lightweight Python wrapper around CUDA custom functions, in particular 8-bit optimizers, matrix multiplication (LLM.int8()), and 8 & 4-bit quantization functions.
 
 Current build status
 ====================
@@ -239,5 +239,8 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@iamthebot](https://github.com/iamthebot/)
+* [@shaowei-su](https://github.com/shaowei-su/)
+* [@snapbug](https://github.com/snapbug/)
 * [@xhochy](https://github.com/xhochy/)
 
