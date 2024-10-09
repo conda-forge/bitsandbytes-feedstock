@@ -37,6 +37,10 @@ requirements:
   run:
     - python
     - pytorch
+    # This fixes:
+    # torch 2.4.1 requires setuptools, which is not installed.
+    # Remove once the feedstock has fixed this.
+    - setuptools
     - scipy
 
 test:
