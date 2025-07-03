@@ -25,6 +25,7 @@ requirements:
     - {{ compiler("cuda") }}                 # [cuda_compiler_version != "None"]
     - cmake
     - ninja
+    - make
   host:
     - python
     - pip
