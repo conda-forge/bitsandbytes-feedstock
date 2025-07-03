@@ -1,5 +1,5 @@
 {% set name = "bitsandbytes" %}
-{% set version = "0.46.0" %}
+{% set version = "0.46.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 source:
   # Don't use the PyPI source tarball as this already contains compiled code.
   url: https://github.com/bitsandbytes-foundation/bitsandbytes/archive/refs/tags/{{ version }}.tar.gz
-  sha256: eba6960b8b5a449c959d48fa24460ac2e7fe4e7578737abb580c325a41c56efc
+  sha256: 8326835082ad5590e4eab2cc51129bf55dd1c16e3d3038bc23431371c24b47da
 
 build:
   number: 0
@@ -25,15 +25,17 @@ requirements:
     - {{ compiler("cuda") }}                 # [cuda_compiler_version != "None"]
     - cmake
     - ninja
+    - make
   host:
     - python
     - pip
-    - setuptools
     - cuda-cudart-dev   # [(cuda_compiler_version or "").startswith("12")]
     - libcublas-dev     # [(cuda_compiler_version or "").startswith("12")]
     - libcusparse-dev   # [(cuda_compiler_version or "").startswith("12")]
     - cuda-version  {{ cuda_compiler_version }}  # [cuda_compiler_version != "None"]
     - scipy
+    - scikit-build-core
+    - setuptools >=63.0.0
   run:
     - python
     - pytorch
