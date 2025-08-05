@@ -19,7 +19,7 @@ popd
 if [[ "${cuda_compiler_version:-None}" != "None" ]]; then
   mkdir -p build/cuda
   pushd build/cuda
-  cmake ${CMAKE_ARGS} -DCOMPUTE_BACKEND=cuda -GNinja ../..
+  cmake ${CMAKE_ARGS} -DCOMPUTE_BACKEND=cuda -DCOMPUTE_CAPABILITY="50;60;70;75;80;86;90;100;120" -GNinja ../..
   ninja
   popd
 fi
