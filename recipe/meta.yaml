@@ -1,5 +1,5 @@
 {% set name = "bitsandbytes" %}
-{% set version = "0.46.1" %}
+{% set version = "0.47.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +8,10 @@ package:
 source:
   # Don't use the PyPI source tarball as this already contains compiled code.
   url: https://github.com/bitsandbytes-foundation/bitsandbytes/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 8326835082ad5590e4eab2cc51129bf55dd1c16e3d3038bc23431371c24b47da
+  sha256: 3c6a85e53f64bc2c3f22429f237c7aa524e85e6a120bab7d6435384cd2f7a8ea
 
 build:
-  number: 1
+  number: 0
   string: cuda{{ cuda_compiler_version | replace('.', '') }}_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
   string: cpu_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version == "None"]
   skip: true  # [not linux]
