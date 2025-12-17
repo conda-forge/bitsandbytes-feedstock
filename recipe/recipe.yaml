@@ -39,7 +39,7 @@ requirements:
         - libcublas-dev
         - libcusparse-dev
     - if: cuda_compiler_version != "None"
-      then: cuda-version  ${{ cuda_compiler_version }}
+      then: cuda-version  ${{ cuda_compiler_version }}.*
     - scipy
     - scikit-build-core
     - setuptools >=63.0.0
