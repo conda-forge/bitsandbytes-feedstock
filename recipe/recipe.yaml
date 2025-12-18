@@ -1,0 +1,74 @@
+schema_version: 1
+
+context:
+  name: bitsandbytes
+  version: 0.49.0
+  build: 0
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  # Don't use the PyPI source tarball as this already contains compiled code.
+  url: https://github.com/bitsandbytes-foundation/bitsandbytes/archive/refs/tags/${{ version }}.tar.gz
+  sha256: 6d4d3df75af8e6f613081b54250e64246f128d2a07884a551d0cd63a26388173
+
+build:
+  number: ${{ build if cuda_compiler_version == "None" else build + 200 }}
+  string: ${{ "cpu" if cuda_compiler_version == "None" else "cuda" + (cuda_compiler_version | replace('.', '')) }}_py${{ python | version_to_buildstring }}h${{ hash }}_${{ build if cuda_compiler_version == "None" else build + 200 }}
+  skip: not linux
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+    - ${{ compiler('cxx') }}
+    - if: cuda_compiler_version != "None"
+      then: ${{ compiler("cuda") }}
+    - cmake
+    - ninja
+    - make
+    - libgomp
+  host:
+    - python
+    - pip
+    - if: (cuda_compiler_version or "") is startingwith("12")
+      then:
+        - cuda-cudart-dev
+        - libcublas-dev
+        - libcusparse-dev
+    - if: cuda_compiler_version != "None"
+      then: cuda-version  ${{ cuda_compiler_version }}.*
+    - scipy
+    - scikit-build-core
+    - setuptools >=63.0.0
+    - libgomp
+  run:
+    - packaging
+    - python
+    - pytorch
+    # This fixes:
+    # torch 2.4.1 requires setuptools, which is not installed.
+    # Remove once the feedstock has fixed this.
+    - setuptools
+    - scipy
+
+tests:
+  - python:
+      pip_check: true
+      imports:
+        - bitsandbytes
+
+about:
+  summary: The bitsandbytes library is a lightweight Python wrapper around CUDA custom functions, in particular 8-bit optimizers, matrix multiplication (LLM.int8()), and 8 & 4-bit quantization functions.
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/bitsandbytes-foundation/bitsandbytes
+
+extra:
+  recipe-maintainers:
+    - xhochy
+    - iamthebot
+    - shaowei-su
+    - snapbug
