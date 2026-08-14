@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: bitsandbytes
-  version: "0.50.0"
+  version: "0.50.1"
   build: 0
 
 package:
@@ -12,7 +12,7 @@ package:
 source:
   # Don't use the PyPI source tarball as this already contains compiled code.
   url: https://github.com/bitsandbytes-foundation/bitsandbytes/archive/refs/tags/${{ version }}.tar.gz
-  sha256: 6d3820f5f235dbd4859cc7f34998ec792f3fc92e4cb93ec981b1fdc53dd54826
+  sha256: 8537f8e2e9f946fac624803903e26b23750cb6d1520441d259428ad32723af93
 
 build:
   number: ${{ build if cuda_compiler_version == "None" else build + 200 }}
